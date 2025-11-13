@@ -17,4 +17,9 @@ namespace WebAPICore
         public decimal Price { get; set; }
     }
 
+    public class Greeting
+    {
+        public string Name { get; set; } = string.Empty;
+    }
+
 }
