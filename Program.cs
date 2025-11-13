@@ -1,4 +1,9 @@
+using WebAPICore.Service;
+
 var builder = WebApplication.CreateBuilder(args);
+// Register the service for DI
+
+builder.Services.AddScoped<IGreetingService, GreetingService>();
 
 // Add services to the container.
 

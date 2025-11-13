@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Xml.Linq;
+using WebAPICore.Service;
 
 namespace WebAPICore.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -40,6 +42,7 @@ namespace WebAPICore.Controllers
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
         }
 
+
         // GET: api/products/{id}
         [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
@@ -49,6 +52,8 @@ namespace WebAPICore.Controllers
                 return NotFound();
             return Ok(product);
         }
+
+        
 
     }
 }
