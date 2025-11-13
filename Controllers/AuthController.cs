@@ -19,14 +19,12 @@ namespace WebAPICore.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] UserLogin login)
         {
-            // Example validation — in real apps, check DB or Identity
-            if (login.Username == "admin" && login.Password == "password@1234Test")
-            {
-                var token = GenerateToken(login.Username);
-                return Ok(new { token });
-            }
-
-            return Unauthorized("Invalid username or password");
+                if (login.Username == "admin" && login.Password == "password@1234Test")
+                {
+                    var token = GenerateToken(login.Username);
+                    return Ok(new { token });
+                }           
+                throw new ArgumentException("User Authentication Failed! Enter the correct credentials!!");                           
         }
 
         private string GenerateToken(string username)

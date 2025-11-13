@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Register the service for DI
 builder.Services.AddScoped<IGreetingService, GreetingService>();
 
+
 // Add JWT Authentication
 var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
 
@@ -39,6 +40,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.UseMiddleware<WebAPICore.Middleware.ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
